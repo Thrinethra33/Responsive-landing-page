@@ -1,0 +1,210 @@
+/* Base Resets */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    scroll-behavior: smooth;
+}
+
+/* --- NAVIGATION STYLES --- */
+.navbar {
+    position: fixed; /* Keeps navbar visible on all pages/scroll depths */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background-color: transparent; /* Initial transparent state */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: background-color 0.4s ease, box-shadow 0.4s ease, height 0.4s ease;
+}
+
+/* Interactive Class added via JavaScript on scroll */
+.navbar.scrolled {
+    background-color: #1a1a2e; /* Darker, solid background on scroll */
+    height: 70px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 30px;
+}
+
+.logo {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.logo span {
+    color: #e94560; /* Accent color */
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+/* Hover effect on menu items */
+.nav-links {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-links:hover {
+    color: #e94560; /* Text color change on hover */
+}
+
+/* Underline slide effect on hover */
+.nav-links::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: #e94560;
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+.nav-links:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* Mobile Hamburger Menu Icon */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+}
+
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 4px 0;
+    transition: all 0.3s ease;
+}
+
+/* --- LANDING PAGE CONTENT STYLES --- */
+.hero-section {
+    background: linear-gradient(135deg, #0f0c20, #1a1a2e, #e94560);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #dddddd;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #e94560;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background-color: #cc3750;
+    transform: translateY(-2px);
+}
+
+.content-section {
+    padding: 100px 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.content-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #1a1a2e;
+}
+
+.content-section p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+.secondary-bg {
+    background-color: #f7f9fa;
+    max-width: 100%;
+}
+
+/* --- RESPONSIVE MEDIA QUERY (Mobile Layout) --- */
+@media screen and (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: absolute;
+        top: 80px;
+        left: -100%;
+        flex-direction: column;
+        background-color: #1a1a2e;
+        width: 100%;
+        height: calc(100vh - 80px);
+        text-align: center;
+        transition: all 0.4s ease;
+        padding-top: 50px;
+    }
+
+    .nav-menu.active {
+        left: 0; /* Slides menu out on mobile toggle */
+    }
+
+    .nav-menu li {
+        margin: 25px 0;
+    }
+
+    .nav-links {
+        font-size: 1.3rem;
+    }
+
+    /* Hamburger Animation to 'X' */
+    .menu-toggle.active .bar:nth-child(1) {
+        transform: translateY(11px) rotate(45deg);
+    }
+    .menu-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-toggle.active .bar:nth-child(3) {
+        transform: translateY(-11px) rotate(-45deg);
+    }
+}
